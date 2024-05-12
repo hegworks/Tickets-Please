@@ -139,11 +139,27 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="DateManager.cpp" />
+    <ClCompile Include="InfoRandomizer.cpp" />
     <ClCompile Include="main\main.cpp" />
-    <ClCompile Include="ProjectSettings.cpp" />
+    <ClCompile Include="RuleDecider.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Date.h" />
+    <ClInclude Include="DateManager.h" />
+    <ClInclude Include="GameplaySettings.h" />
+    <ClInclude Include="Gender.h" />
+    <ClInclude Include="InfoRandomizer.h" />
+    <ClInclude Include="Logger.h" />
+    <ClInclude Include="PersonType.h" />
+    <ClInclude Include="Rng.h" />
+    <ClInclude Include="Rule.h" />
     <ClInclude Include="ProjectSettings.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="RuleDecider.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Tickets Please.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

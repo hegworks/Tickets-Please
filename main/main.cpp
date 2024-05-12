@@ -1,9 +1,15 @@
+#include "../InfoRandomizer.h"
 #include "../ProjectSettings.h"
+#include "../Rng.h"
+#include "../Rule.h"
+#include "../RuleDecider.h"
 #include <iostream>
 #include <SFML/Graphics.hpp>
 
 int main()
 {
+	srand(time(0));
+
 	sf::RenderWindow window(sf::VideoMode(1280, 720), "Tickets, Please", sf::Style::Close | sf::Style::Titlebar);
 
 
@@ -88,14 +94,21 @@ int main()
 	}
 	// =====================================
 
-
-
 	// =====================================
 	sf::Text scoreText;
 	scoreText.setFont(font);
 	scoreText.setString("Score: ");
 	scoreText.setPosition(ProjectSettings::WindowSize::X / 2 - ticketTexture.getSize().x / 2, 10);
 	// =====================================
+
+
+
+	InfoRandomizer infoRandomizer{};
+	infoRandomizer.GenerateData();
+
+	RuleDecider ruleDecider{};
+	ruleDecider.DecideRule();
+
 
 
 
