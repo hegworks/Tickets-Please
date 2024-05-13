@@ -1,3 +1,4 @@
+#include "../IdPicturesDb.h"
 #include "../InfoRandomizer.h"
 #include "../ProjectSettings.h"
 #include "../Rng.h"
@@ -109,6 +110,11 @@ int main()
 	RuleDecider ruleDecider{};
 	ruleDecider.DecideRule();
 
+	IdPicturesDb::LoadSprites();
+	IdPicturesDb::maleSprites[0].setPosition(250, 250);
+	IdPicturesDb::maleSprites[1].setPosition(350, 250);
+	IdPicturesDb::femaleSprites[2].setPosition(450, 250);
+
 
 
 
@@ -129,6 +135,9 @@ int main()
 		window.draw(ticketSprite);
 		window.draw(collectTicketSprite);
 		window.draw(collectMoneySprite);
+		window.draw(IdPicturesDb::maleSprites[0]);
+		window.draw(IdPicturesDb::maleSprites[1]);
+		window.draw(IdPicturesDb::femaleSprites[2]);
 		window.display();
 	}
 
