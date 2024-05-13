@@ -3,7 +3,7 @@ enum class Rule
 {
 	Matching,
 	IdTitlePicture,
-	TicketTime,
+	TicketDate,
 	TicketTorn,
 	CrossStudent,
 	CrossElder,

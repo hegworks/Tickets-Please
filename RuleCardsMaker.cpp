@@ -55,9 +55,19 @@ RuleCardsMaker::Cards RuleCardsMaker::GenerateIdTitlePictureCards()
 	return cards;
 }
 
-RuleCardsMaker::Cards RuleCardsMaker::GenerateTicketTimeCards()
+RuleCardsMaker::Cards RuleCardsMaker::GenerateTicketDateCards()
 {
-	return Cards();
+	// generate Id
+	InfoRandomizer::Data data = InfoRandomizer::GetData();
+	int age = InfoRandomizer::GenerateRandomAge(data.personType);
+	sf::Sprite picture = IdPicturesDb::GetRandomPicture(data.gender);
+	cards.id = Id(data.gender, age, data.personType, picture);
+
+	// generate Ticket
+	Date date = DateManager::GenerateDateBefore(InfoRandomizer::GetCurrentDate());
+	cards.ticket = Ticket(date, data.gender, false, data.personType);
+
+	return cards;
 }
 
 RuleCardsMaker::Cards RuleCardsMaker::GenerateTicketTornCards()

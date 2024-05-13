@@ -41,8 +41,8 @@ int main()
 	case Rule::IdTitlePicture:
 		cards = RuleCardsMaker::GenerateIdTitlePictureCards();
 		break;
-	case Rule::TicketTime:
-		cards = RuleCardsMaker::GenerateTicketTimeCards();
+	case Rule::TicketDate:
+		cards = RuleCardsMaker::GenerateTicketDateCards();
 		break;
 	case Rule::TicketTorn:
 		cards = RuleCardsMaker::GenerateTicketTornCards();
