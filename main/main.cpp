@@ -2,9 +2,11 @@
 #include "../CollectBtnClickReporter.h"
 #include "../DateManager.h"
 #include "../Font.h"
+#include "../GameStateManager.h"
 #include "../Id.h"
 #include "../IdPicturesDb.h"
 #include "../InfoRandomizer.h"
+#include "../main.h"
 #include "../ProjectSettings.h"
 #include "../Rng.h"
 #include "../Rule.h"
@@ -26,15 +28,67 @@ int main()
 	ButtonsManager::LoadAssets();
 	CollectBtnClickReporter::LoadAssets();
 
+	main::NewCards();
 
+	while (window.isOpen())
+	{
+		sf::Event event;
+		while (window.pollEvent(event))
+		{
+			if (event.type == sf::Event::Closed)
+				window.close();
+
+			else if (event.type == sf::Event::MouseButtonPressed)
+			{
+				if (event.mouseButton.button == sf::Mouse::Left)
+				{
+					sf::Vector2i mousePos = sf::Vector2i(event.mouseButton.x, event.mouseButton.y);
+
+					GameState oldGameState = GameStateManager::gameState;
+					GameStateManager::OnGameEvent(GameEvent::ClickedOnScreen);
+					GameState newGameState = GameStateManager::gameState;
+					if (oldGameState != newGameState)
+					{
+						// if clicking on screen changed the game state, then do nothing
+						// this is to prevent double game state changes when player
+						// clicks on a button when we are in WaitingForSkipCollectBtnReport
+						// state. as it first triggers ClickedOnScreen, then ClickedOn one
+						// one of the buttons
+					}
+					else if (ButtonsManager::HasClickedOnCollectMoney(mousePos))
+					{
+						GameStateManager::OnGameEvent(GameEvent::ClickedOnCollectMoneyBtn);
+					}
+					else if (ButtonsManager::HasClickedOnCollectTicket(mousePos))
+					{
+						GameStateManager::OnGameEvent(GameEvent::ClickedOnCollectTicketBtn);
+					}
+				}
+			}
+		}
+
+		window.clear(sf::Color(115, 115, 140));
+		main::id.Draw(window);
+		main::ticket.Draw(window);
+		DateManager::DrawCurrentDate(window);
+		ButtonsManager::Draw(window);
+		CollectBtnClickReporter::Draw(window);
+		window.display();
+	}
+
+	return 0;
+}
+
+
+
+void main::NewCards()
+{
 	InfoRandomizer::GenerateCurrentDate();
 	DateManager::CreateCurrentDateText(InfoRandomizer::GetCurrentDate());
 
 	InfoRandomizer::GenerateData();
 	RuleDecider::DecideRule();
 
-	Id id;
-	Ticket ticket;
 	RuleCardsMaker::Cards cards;
 
 	switch (RuleDecider::GetDecidedRule())
@@ -65,43 +119,4 @@ int main()
 	}
 	id = cards.id;
 	ticket = cards.ticket;
-	int zz = 0;
-
-	while (window.isOpen())
-	{
-		sf::Event event;
-		while (window.pollEvent(event))
-		{
-			if (event.type == sf::Event::Closed)
-				window.close();
-
-			else if (event.type == sf::Event::MouseButtonPressed)
-			{
-				if (event.mouseButton.button == sf::Mouse::Left)
-				{
-					sf::Vector2i mousePos = sf::Vector2i(event.mouseButton.x, event.mouseButton.y);
-					if (ButtonsManager::HasClickedOnCollectMoney(mousePos))
-					{
-						zz++;
-						std::cout << "clicked on collect money\n";
-					}
-					else if (ButtonsManager::HasClickedOnCollectTicket(mousePos))
-					{
-						std::cout << "clicked on collect ticket\n";
-					}
-				}
-			}
-		}
-
-		window.clear(sf::Color(115, 115, 140));
-		id.Draw(window);
-		ticket.Draw(window);
-		DateManager::DrawCurrentDate(window);
-		ButtonsManager::Draw(window);
-		CollectBtnClickReporter::Draw(window, zz);
-
-		window.display();
-	}
-
-	return 0;
 }

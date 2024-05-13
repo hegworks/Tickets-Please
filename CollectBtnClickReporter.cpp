@@ -18,7 +18,30 @@ void CollectBtnClickReporter::LoadAssets()
 	}
 }
 
-void CollectBtnClickReporter::Draw(sf::RenderWindow& window, int decidedRuleIndex)
+//void CollectBtnClickReporter::Initialize(sf::RenderWindow& renderWindow)
+//{
+//	window = &renderWindow;
+//}
+
+void CollectBtnClickReporter::Show(int index)
 {
-	window.draw(sprites[decidedRuleIndex]);
+	reportIndex = index;
+	canShow = true;
+	/*if (canShow)
+	{
+		window->draw(sprites[decidedRuleIndex]);
+	}*/
+}
+
+void CollectBtnClickReporter::Draw(sf::RenderWindow& renderWindow)
+{
+	if (canShow)
+	{
+		renderWindow.draw(sprites[reportIndex]);
+	}
+}
+
+void CollectBtnClickReporter::Hide()
+{
+	canShow = false;
 }

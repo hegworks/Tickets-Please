@@ -11,8 +11,7 @@ void RuleDecider::DecideRule()
 	int mismatchRand = Rng::BetweenInclusive(1, 100);
 	if (ProjectSettings::CanLog)
 		std::cout << "mismatchRand: " << mismatchRand << std::endl;
-	//bool isMismatch = mismatchRand > GameplaySettings::MismatchChance;
-	bool isMismatch = true;
+	bool isMismatch = mismatchRand > GameplaySettings::MismatchChance;
 
 	if (!isMismatch)
 	{

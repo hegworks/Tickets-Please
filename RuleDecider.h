@@ -12,6 +12,10 @@ public:
 	{
 		return decidedRule;
 	}
+	inline static int GetDecidedRuleIndex()
+	{
+		return decidedRuleIndex;
+	}
 
 	static void DecideRule();
 };
