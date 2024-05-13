@@ -72,7 +72,17 @@ RuleCardsMaker::Cards RuleCardsMaker::GenerateTicketDateCards()
 
 RuleCardsMaker::Cards RuleCardsMaker::GenerateTicketTornCards()
 {
-	return Cards();
+	// generate Id
+	InfoRandomizer::Data data = InfoRandomizer::GetData();
+	int age = InfoRandomizer::GenerateRandomAge(data.personType);
+	sf::Sprite picture = IdPicturesDb::GetRandomPicture(data.gender);
+	cards.id = Id(data.gender, age, data.personType, picture);
+
+	// generate Ticket
+	Date date = DateManager::GenerateDateAfter(InfoRandomizer::GetCurrentDate());
+	cards.ticket = Ticket(date, data.gender, true, data.personType);
+
+	return cards;
 }
 
 RuleCardsMaker::Cards RuleCardsMaker::GenerateCrossStudentCards()

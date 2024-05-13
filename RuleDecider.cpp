@@ -22,7 +22,7 @@ void RuleDecider::DecideRule()
 	{
 		int randomRuleNumber = Rng::BetweenInclusive(1, GameplaySettings::RuleEnumSize - 1);
 		//decidedRule = static_cast<Rule>(randomRuleNumber);
-		decidedRule = static_cast<Rule>(2);
+		decidedRule = static_cast<Rule>(3);
 	}
 	if (ProjectSettings::CanLog)
 		std::cout << "decidedRule: " << static_cast<int>(decidedRule) << std::endl;
