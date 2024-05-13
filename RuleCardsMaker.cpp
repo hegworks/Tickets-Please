@@ -123,7 +123,28 @@ RuleCardsMaker::Cards RuleCardsMaker::GenerateCrossStudentCards()
 	return cards;
 }
 
+/// <summary>
+/// TicketPersonType is Elder but
+/// IdPersonType is not Elder
+/// </summary>
 RuleCardsMaker::Cards RuleCardsMaker::GenerateCrossElderCards()
 {
-	return Cards();
+	// generate Id
+	PersonType idPersonType;
+	int randomNotStudent = Rng::BetweenInclusive(0, 1) == 0;
+	if (randomNotStudent == 0)
+		idPersonType = PersonType::Normal;
+	else
+		idPersonType = PersonType::Student;
+
+	InfoRandomizer::Data data = InfoRandomizer::GetData();
+	int age = InfoRandomizer::GenerateRandomAge(idPersonType);
+	sf::Sprite picture = IdPicturesDb::GetRandomPicture(data.gender);
+	cards.id = Id(data.gender, age, idPersonType, picture);
+
+	// generate Ticket
+	Date date = DateManager::GenerateDateAfter(InfoRandomizer::GetCurrentDate());
+	cards.ticket = Ticket(date, data.gender, false, PersonType::Elder);
+
+	return cards;
 }
