@@ -4,6 +4,9 @@
 #include "Rng.h"
 #include "RuleCardsMaker.h"
 
+/// <summary>
+/// every field matches
+/// </summary>
 RuleCardsMaker::Cards RuleCardsMaker::GenerateMatchingCards()
 {
 	// generate Id
@@ -19,6 +22,9 @@ RuleCardsMaker::Cards RuleCardsMaker::GenerateMatchingCards()
 	return cards;
 }
 
+/// <summary>
+/// IdTitle != IdPicture
+/// </summary>
 RuleCardsMaker::Cards RuleCardsMaker::GenerateIdTitlePictureCards()
 {
 	// generate Id
@@ -55,6 +61,9 @@ RuleCardsMaker::Cards RuleCardsMaker::GenerateIdTitlePictureCards()
 	return cards;
 }
 
+/// <summary>
+/// TicketDate < CurrentDate
+/// </summary>
 RuleCardsMaker::Cards RuleCardsMaker::GenerateTicketDateCards()
 {
 	// generate Id
@@ -70,6 +79,9 @@ RuleCardsMaker::Cards RuleCardsMaker::GenerateTicketDateCards()
 	return cards;
 }
 
+/// <summary>
+/// Ticket isTorn
+/// </summary>
 RuleCardsMaker::Cards RuleCardsMaker::GenerateTicketTornCards()
 {
 	// generate Id
@@ -85,9 +97,30 @@ RuleCardsMaker::Cards RuleCardsMaker::GenerateTicketTornCards()
 	return cards;
 }
 
+/// <summary>
+/// TicketPersonType is Student but
+/// IdPersonType is not Student
+/// </summary>
 RuleCardsMaker::Cards RuleCardsMaker::GenerateCrossStudentCards()
 {
-	return Cards();
+	// generate Id
+	PersonType idPersonType;
+	int randomNotStudent = Rng::BetweenInclusive(0, 1) == 0;
+	if (randomNotStudent == 0)
+		idPersonType = PersonType::Normal;
+	else
+		idPersonType = PersonType::Elder;
+
+	InfoRandomizer::Data data = InfoRandomizer::GetData();
+	int age = InfoRandomizer::GenerateRandomAge(idPersonType);
+	sf::Sprite picture = IdPicturesDb::GetRandomPicture(data.gender);
+	cards.id = Id(data.gender, age, idPersonType, picture);
+
+	// generate Ticket
+	Date date = DateManager::GenerateDateAfter(InfoRandomizer::GetCurrentDate());
+	cards.ticket = Ticket(date, data.gender, false, PersonType::Student);
+
+	return cards;
 }
 
 RuleCardsMaker::Cards RuleCardsMaker::GenerateCrossElderCards()
