@@ -8,7 +8,7 @@
 
 void RuleDecider::DecideRule()
 {
-	int mismatchRand = rand() % 100;
+	int mismatchRand = Rng::BetweenInclusive(1, 100);
 	if (ProjectSettings::CanLog)
 		std::cout << "mismatchRand: " << mismatchRand << std::endl;
 	//bool isMismatch = mismatchRand > GameplaySettings::MismatchChance;

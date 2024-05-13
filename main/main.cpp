@@ -17,9 +17,6 @@ int main()
 	sf::RenderWindow window(sf::VideoMode(1280, 720), "Tickets, Please", sf::Style::Close | sf::Style::Titlebar);
 
 
-	srand(time(0));
-
-
 	Font::LoadAssets();
 	IdPicturesDb::LoadAssets();
 	Id::LoadAssets();
@@ -27,6 +24,7 @@ int main()
 
 
 	InfoRandomizer::GenerateCurrentDate();
+	DateManager::CreateCurrentDateText(InfoRandomizer::GetCurrentDate());
 
 	InfoRandomizer::GenerateData();
 	RuleDecider::DecideRule();
@@ -73,6 +71,7 @@ int main()
 		window.clear(sf::Color(115, 115, 140));
 		id.Draw(window);
 		ticket.Draw(window);
+		DateManager::DrawCurrentDate(window);
 		window.display();
 	}
 

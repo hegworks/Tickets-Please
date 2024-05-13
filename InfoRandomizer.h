@@ -10,8 +10,6 @@ public:
 	{
 		Gender gender;
 		PersonType personType;
-		/*Date expiration;
-		bool isTorn;*/
 	};
 
 private:

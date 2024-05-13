@@ -9,7 +9,7 @@ class Ticket
 private:
 	sf::Text expiration;
 	sf::Text gender;
-	bool isTorn;
+	bool isTorn = false;
 	sf::Sprite picture;
 
 	static const std::string backgroundTexturePath;

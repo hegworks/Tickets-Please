@@ -13,5 +13,7 @@ public:
 	inline static const int TicketGender[2] = { 545,460 };
 	inline static const int TicketTorn[2] = { 568,452 };
 	inline static const int TicketPicture[2] = { 708,410 };
+
+	inline static const int CurrentDate[2] = { 707,27 };
 };
 

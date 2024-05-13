@@ -25,15 +25,6 @@ void InfoRandomizer::GenerateData()
 		data.personType = PersonType::Student;
 	else
 		data.personType = PersonType::Elder;
-
-	//// random valid expiration Date
-	//DateManager dm;
-	//data.expiration = dm.GenerateDateAfter(currentDate);
-
-	//// not torn ticket
-	//data.isTorn = false;
-
-
 }
 
 void InfoRandomizer::GenerateCurrentDate()

@@ -1,5 +1,7 @@
 #include "DateManager.h"
+#include "Font.h"
 #include "GameplaySettings.h"
+#include "Positions.h"
 #include "Rng.h"
 #include <random>
 #include <stdlib.h>
@@ -59,3 +61,18 @@ Date DateManager::GenerateDateBefore(Date date)
 	}
 	return newDate;
 }
+
+void DateManager::CreateCurrentDateText(Date date)
+{
+	std::string dateString = std::to_string(date.year) + "." + std::to_string(date.month) + "." + std::to_string(date.day);
+	Font::SetStyle_TopTexts(currentDate);
+	currentDate.setString(dateString);
+	currentDate.setPosition(Positions::CurrentDate[0], Positions::CurrentDate[1]);
+}
+
+void DateManager::DrawCurrentDate(sf::RenderWindow& window)
+{
+	window.draw(currentDate);
+}
+
+
