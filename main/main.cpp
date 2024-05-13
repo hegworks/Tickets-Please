@@ -6,6 +6,7 @@
 #include "../ProjectSettings.h"
 #include "../Rng.h"
 #include "../Rule.h"
+#include "../RuleCardsMaker.h"
 #include "../RuleDecider.h"
 #include "../Ticket.h"
 #include <iostream>
@@ -32,19 +33,33 @@ int main()
 
 	Id id;
 	Ticket ticket;
-	if (RuleDecider::GetDecidedRule() == Rule::Matching)
+	RuleCardsMaker::Cards cards;
+
+	switch (RuleDecider::GetDecidedRule())
 	{
-		// generate Id
-		InfoRandomizer::Data data = InfoRandomizer::GetData();
-		int age = InfoRandomizer::GenerateRandomAge(data.personType);
-		sf::Sprite picture = IdPicturesDb::GetRandomPicture(data.gender);
-		id = Id(data.gender, age, data.personType, picture);
-
-		// generate Ticket
-		Date date = DateManager::GenerateDateAfter(InfoRandomizer::GetCurrentDate());
-		ticket = Ticket(date, data.gender, false, data.personType);
+	case Rule::Matching:
+		cards = RuleCardsMaker::GenerateMatchingCards();
+		break;
+	case Rule::IdTitlePicture:
+		cards = RuleCardsMaker::GenerateIdTitlePictureCards();
+		break;
+	case Rule::TicketTime:
+		cards = RuleCardsMaker::GenerateTicketTimeCards();
+		break;
+	case Rule::TicketTorn:
+		cards = RuleCardsMaker::GenerateTicketTornCards();
+		break;
+	case Rule::CrossStudent:
+		cards = RuleCardsMaker::GenerateCrossStudentCards();
+		break;
+	case Rule::CrossElder:
+		cards = RuleCardsMaker::GenerateCrossElderCards();
+		break;
+	default:
+		break;
 	}
-
+	id = cards.id;
+	ticket = cards.ticket;
 
 	while (window.isOpen())
 	{

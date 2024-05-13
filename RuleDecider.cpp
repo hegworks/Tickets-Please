@@ -12,7 +12,7 @@ void RuleDecider::DecideRule()
 	if (ProjectSettings::CanLog)
 		std::cout << "mismatchRand: " << mismatchRand << std::endl;
 	//bool isMismatch = mismatchRand > GameplaySettings::MismatchChance;
-	bool isMismatch = false;
+	bool isMismatch = true;
 
 	if (!isMismatch)
 	{
@@ -21,7 +21,8 @@ void RuleDecider::DecideRule()
 	else
 	{
 		int randomRuleNumber = Rng::BetweenInclusive(1, GameplaySettings::RuleEnumSize - 1);
-		decidedRule = static_cast<Rule>(randomRuleNumber);
+		//decidedRule = static_cast<Rule>(randomRuleNumber);
+		decidedRule = static_cast<Rule>(1);
 	}
 	if (ProjectSettings::CanLog)
 		std::cout << "decidedRule: " << static_cast<int>(decidedRule) << std::endl;

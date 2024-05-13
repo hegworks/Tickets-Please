@@ -1,4 +1,5 @@
 #pragma once
+#include "Gender.h"
 #include <filesystem>
 #include <iostream>
 #include <SFML/Graphics.hpp>
