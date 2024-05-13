@@ -151,6 +151,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ButtonsManager.cpp" />
     <ClCompile Include="DateManager.cpp" />
     <ClCompile Include="Id.cpp" />
     <ClCompile Include="IdPicturesDb.cpp" />
@@ -161,6 +162,7 @@
     <ClCompile Include="Ticket.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ButtonsManager.h" />
     <ClInclude Include="Date.h" />
     <ClInclude Include="DateManager.h" />
     <ClInclude Include="Font.h" />

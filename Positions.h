@@ -15,5 +15,8 @@ public:
 	inline static const int TicketPicture[2] = { 708,410 };
 
 	inline static const int CurrentDate[2] = { 707,27 };
+
+	inline static const int CollectMoney[2] = { 445,570 };
+	inline static const int CollectTicket[2] = { 673,570 };
 };
 
