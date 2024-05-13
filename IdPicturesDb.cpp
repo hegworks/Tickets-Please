@@ -12,7 +12,7 @@ sf::Texture IdPicturesDb::femaleTextures[FemalePicsCount];
 sf::Sprite IdPicturesDb::maleSprites[MalePicsCount];
 sf::Sprite IdPicturesDb::femaleSprites[FemalePicsCount];
 
-void IdPicturesDb::LoadSprites()
+void IdPicturesDb::LoadAssets()
 {
 	LoadSpritesFromAddress(malePicsAddress, maleTextures, maleSprites);
 	LoadSpritesFromAddress(femalePicsAddress, femaleTextures, femaleSprites);
@@ -30,7 +30,6 @@ void IdPicturesDb::LoadSpritesFromAddress(std::string address, sf::Texture textu
 
 		sf::Sprite sprite;
 		sprite.setTexture(textures[i]);
-		sprite.setOrigin(textures[i].getSize().x / 2.0f, textures[i].getSize().y / 2.0f);
 		sprites[i] = sprite;
 		i++;
 	};

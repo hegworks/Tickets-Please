@@ -21,7 +21,7 @@ private:
 	static sf::Texture femaleTextures[FemalePicsCount];
 
 public:
-	static void LoadSprites();
+	static void LoadAssets();
 
 private: static void LoadSpritesFromAddress(std::string address, sf::Texture textures[], sf::Sprite sprites[]);
 };

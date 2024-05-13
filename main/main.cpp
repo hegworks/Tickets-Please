@@ -1,3 +1,5 @@
+#include "../Font.h"
+#include "../Id.h"
 #include "../IdPicturesDb.h"
 #include "../InfoRandomizer.h"
 #include "../ProjectSettings.h"
@@ -20,7 +22,7 @@ int main()
 	const int BETWEEN_BUTTONS_X_OFFSET = 10;
 
 	// =====================================
-	sf::Texture idCardTexture;
+	/*sf::Texture idCardTexture;
 	if (!idCardTexture.loadFromFile("Assets/2D/IdCard.png"))
 	{
 		std::cout << "IdCard.png doesn't exist";
@@ -30,7 +32,7 @@ int main()
 	idCardsprite.setTexture(idCardTexture);
 	idCardsprite.setOrigin(idCardTexture.getSize().x / 2, idCardTexture.getSize().y / 2);
 	int idCardPosY = ProjectSettings::WindowSize::Y / 2 - idCardTexture.getSize().y / 2 + FIXED_Y_OFFSET;
-	idCardsprite.setPosition(ProjectSettings::WindowSize::X / 2, idCardPosY);
+	idCardsprite.setPosition(ProjectSettings::WindowSize::X / 2, idCardPosY);*/
 	// =====================================
 
 
@@ -38,7 +40,7 @@ int main()
 
 
 	// =====================================
-	sf::Texture ticketTexture;
+	/*sf::Texture ticketTexture;
 	if (!ticketTexture.loadFromFile("Assets/2D/Ticket.png"))
 	{
 		std::cout << "Ticket.png doesn't exist";
@@ -48,14 +50,14 @@ int main()
 	ticketSprite.setTexture(ticketTexture);
 	ticketSprite.setOrigin(ticketTexture.getSize().x / 2, ticketTexture.getSize().y / 2);
 	int ticketPosY = idCardPosY = ProjectSettings::WindowSize::Y / 2 + ticketTexture.getSize().y / 2 + FIXED_Y_OFFSET + BETWEEN_CARDS_Y_OFFSET;
-	ticketSprite.setPosition(ProjectSettings::WindowSize::X / 2, ticketPosY);
+	ticketSprite.setPosition(ProjectSettings::WindowSize::X / 2, ticketPosY);*/
 	// =====================================
 
 
 
 
 	// =====================================
-	sf::Texture collectTicketTexture;
+	/*sf::Texture collectTicketTexture;
 	if (!collectTicketTexture.loadFromFile("Assets/2D/CollectTicket.png"))
 	{
 		std::cout << "CollectTicket.png doesn't exist";
@@ -65,59 +67,51 @@ int main()
 	collectTicketSprite.setTexture(collectTicketTexture);
 	collectTicketSprite.setOrigin(collectTicketTexture.getSize().x / 2, collectTicketTexture.getSize().y / 2);
 	collectTicketSprite.setPosition(ProjectSettings::WindowSize::X / 2 + collectTicketTexture.getSize().x / 2 + BETWEEN_BUTTONS_X_OFFSET,
-		ticketPosY + ticketTexture.getSize().y / 2 + collectTicketTexture.getSize().y / 2 + CARDS_BUTTONS_Y_OFFSET);
-	// =====================================
+		ticketPosY + ticketTexture.getSize().y / 2 + collectTicketTexture.getSize().y / 2 + CARDS_BUTTONS_Y_OFFSET);*/
+		// =====================================
+
+
+
+
+		// =====================================
+		/*sf::Texture collectMoneyTexture;
+		if (!collectMoneyTexture.loadFromFile("Assets/2D/CollectMoney.png"))
+		{
+			std::cout << "CollectMoney.png doesn't exist";
+		}
+
+		sf::Sprite collectMoneySprite;
+		collectMoneySprite.setTexture(collectMoneyTexture);
+		collectMoneySprite.setOrigin(collectMoneyTexture.getSize().x / 2, collectMoneyTexture.getSize().y / 2);
+		collectMoneySprite.setPosition(ProjectSettings::WindowSize::X / 2 - collectMoneyTexture.getSize().x / 2 - BETWEEN_BUTTONS_X_OFFSET,
+			ticketPosY + ticketTexture.getSize().y / 2 + collectMoneyTexture.getSize().y / 2 + CARDS_BUTTONS_Y_OFFSET);*/
+			// =====================================
 
 
 
 
 	// =====================================
-	sf::Texture collectMoneyTexture;
-	if (!collectMoneyTexture.loadFromFile("Assets/2D/CollectMoney.png"))
-	{
-		std::cout << "CollectMoney.png doesn't exist";
-	}
-
-	sf::Sprite collectMoneySprite;
-	collectMoneySprite.setTexture(collectMoneyTexture);
-	collectMoneySprite.setOrigin(collectMoneyTexture.getSize().x / 2, collectMoneyTexture.getSize().y / 2);
-	collectMoneySprite.setPosition(ProjectSettings::WindowSize::X / 2 - collectMoneyTexture.getSize().x / 2 - BETWEEN_BUTTONS_X_OFFSET,
-		ticketPosY + ticketTexture.getSize().y / 2 + collectMoneyTexture.getSize().y / 2 + CARDS_BUTTONS_Y_OFFSET);
-	// =====================================
-
-
-
-	// =====================================
-	sf::Font font;
-	if (!font.loadFromFile("Assets/Fonts/Roboto-Regular.ttf"))
-	{
-		std::cout << "Roboto-Regular.ttf doesn't exist";
-	}
-	// =====================================
-
-	// =====================================
-	sf::Text scoreText;
+	/*sf::Text scoreText;
 	scoreText.setFont(font);
 	scoreText.setString("Score: ");
-	scoreText.setPosition(ProjectSettings::WindowSize::X / 2 - ticketTexture.getSize().x / 2, 10);
+	scoreText.setPosition(ProjectSettings::WindowSize::X / 2 - ticketTexture.getSize().x / 2, 10);*/
 	// =====================================
 
+	Font::LoadAssets();
 
-
-	InfoRandomizer infoRandomizer{};
-	infoRandomizer.GenerateData();
+	InfoRandomizer::GenerateData();
 
 	RuleDecider ruleDecider{};
 	ruleDecider.DecideRule();
 
-	IdPicturesDb::LoadSprites();
+	IdPicturesDb::LoadAssets();
 	IdPicturesDb::maleSprites[0].setPosition(250, 250);
 	IdPicturesDb::maleSprites[1].setPosition(350, 250);
 	IdPicturesDb::femaleSprites[2].setPosition(450, 250);
 
 
-
-
+	Id::LoadAssets();
+	Id id("Hesam", 24, "student", IdPicturesDb::maleSprites[2]);
 
 
 	while (window.isOpen())
@@ -130,14 +124,16 @@ int main()
 		}
 
 		window.clear(sf::Color(115, 115, 140));
-		window.draw(scoreText);
+		/*window.draw(scoreText);
 		window.draw(idCardsprite);
 		window.draw(ticketSprite);
 		window.draw(collectTicketSprite);
-		window.draw(collectMoneySprite);
-		window.draw(IdPicturesDb::maleSprites[0]);
+		window.draw(collectMoneySprite);*/
+		id.Draw(window);
+		/*window.draw(IdPicturesDb::maleSprites[0]);
 		window.draw(IdPicturesDb::maleSprites[1]);
-		window.draw(IdPicturesDb::femaleSprites[2]);
+		window.draw(IdPicturesDb::femaleSprites[2]);*/
+
 		window.display();
 	}
 

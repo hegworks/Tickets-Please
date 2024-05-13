@@ -5,6 +5,7 @@
 
 class InfoRandomizer
 {
+public:
 	struct Data
 	{
 		Gender gender;
@@ -14,13 +15,13 @@ class InfoRandomizer
 	};
 
 private:
-	Data data;
-	Date currentDate;
+	static Data data;
+	static Date currentDate;
 
 public:
-	void GenerateData();
-	void GenerateCurrentDate();
-	Data GetData();
-	Date GetCurrentDate();
+	static void GenerateData();
+	static void GenerateCurrentDate();
+	static Data GetData();
+	static Date GetCurrentDate();
 };
 

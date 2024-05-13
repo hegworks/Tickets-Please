@@ -4,8 +4,8 @@
 class DateManager
 {
 public:
-	Date GenerateDate();
-	Date GenerateDateAfter(Date date);
-	Date GenerateDateBefore(Date date);
+	static Date GenerateDate();
+	static Date GenerateDateAfter(Date date);
+	static Date GenerateDateBefore(Date date);
 };
 

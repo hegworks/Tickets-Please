@@ -2,6 +2,9 @@
 #include "InfoRandomizer.h"
 #include <stdlib.h>
 
+InfoRandomizer::Data InfoRandomizer::data;
+Date InfoRandomizer::currentDate;
+
 void InfoRandomizer::GenerateData()
 {
 	// random gender
@@ -32,8 +35,7 @@ void InfoRandomizer::GenerateData()
 
 void InfoRandomizer::GenerateCurrentDate()
 {
-	DateManager dm;
-	currentDate = dm.GenerateDate();
+	currentDate = DateManager::GenerateDate();
 }
 
 InfoRandomizer::Data InfoRandomizer::GetData()

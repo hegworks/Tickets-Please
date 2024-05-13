@@ -5,12 +5,17 @@
 class Id
 {
 private:
-	std::string title;
-	int age;
-	std::string occupation;
+	sf::Text title;
+	sf::Text age;
+	sf::Text occupation;
 	sf::Sprite picture;
 
+	static const std::string backgroundTexturePath;
+	static sf::Texture backgroundTexture;
+	static sf::Sprite backgroundSprite;
+
 public:
-	Id(const std::string title, int age, const std::string occupation, const sf::Sprite picture);
-	void Draw(sf::RenderWindow window);
+	Id(std::string title, int age, std::string occupation, sf::Sprite picture);
+	void Draw(sf::RenderWindow& window);
+	static void LoadAssets();
 };
