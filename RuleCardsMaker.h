@@ -22,6 +22,7 @@ public:
 	static Cards GenerateIdTitlePictureCards();
 	static Cards GenerateTicketDateCards();
 	static Cards GenerateTicketTornCards();
+	static Cards GenerateTicketGenderCards();
 	static Cards GenerateCrossStudentCards();
 	static Cards GenerateCrossElderCards();
 };

@@ -5,6 +5,7 @@ enum class Rule
 	IdTitlePicture,
 	TicketDate,
 	TicketTorn,
+	TicketGender,
 	CrossStudent,
 	CrossElder,
 };

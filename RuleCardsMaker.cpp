@@ -97,6 +97,26 @@ RuleCardsMaker::Cards RuleCardsMaker::GenerateTicketTornCards()
 	return cards;
 }
 
+RuleCardsMaker::Cards RuleCardsMaker::GenerateTicketGenderCards()
+{
+	// generate Id
+	InfoRandomizer::Data data = InfoRandomizer::GetData();
+	int age = InfoRandomizer::GenerateRandomAge(data.personType);
+	sf::Sprite picture = IdPicturesDb::GetRandomPicture(data.gender);
+	cards.id = Id(data.gender, age, data.personType, picture);
+
+	// generate Ticket
+	Gender wrongGender;
+	if (data.gender == Gender::Male)
+		wrongGender = Gender::Female;
+	else
+		wrongGender = Gender::Male;
+	Date date = DateManager::GenerateDateAfter(InfoRandomizer::GetCurrentDate());
+	cards.ticket = Ticket(date, wrongGender, false, data.personType);
+
+	return cards;
+}
+
 /// <summary>
 /// TicketPersonType is Student but
 /// IdPersonType is not Student

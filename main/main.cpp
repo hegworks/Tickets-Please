@@ -49,6 +49,9 @@ int main()
 	case Rule::TicketTorn:
 		cards = RuleCardsMaker::GenerateTicketTornCards();
 		break;
+	case Rule::TicketGender:
+		cards = RuleCardsMaker::GenerateTicketGenderCards();
+		break;
 	case Rule::CrossStudent:
 		cards = RuleCardsMaker::GenerateCrossStudentCards();
 		break;
