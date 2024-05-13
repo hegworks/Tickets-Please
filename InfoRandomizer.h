@@ -21,6 +21,7 @@ private:
 public:
 	static void GenerateData();
 	static void GenerateCurrentDate();
+	static int GenerateRandomAge(PersonType persontype);
 	static Data GetData();
 	static Date GetCurrentDate();
 };

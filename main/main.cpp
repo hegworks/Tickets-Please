@@ -15,28 +15,35 @@ int main()
 {
 	sf::RenderWindow window(sf::VideoMode(1280, 720), "Tickets, Please", sf::Style::Close | sf::Style::Titlebar);
 
+
 	srand(time(0));
 
+
 	Font::LoadAssets();
+	IdPicturesDb::LoadAssets();
+	Id::LoadAssets();
+	Ticket::LoadAssets();
+
+
+	InfoRandomizer::GenerateCurrentDate();
 
 	InfoRandomizer::GenerateData();
+	RuleDecider::DecideRule();
 
-	RuleDecider ruleDecider{};
-	ruleDecider.DecideRule();
+	Id id;
+	Ticket ticket;
+	if (RuleDecider::GetDecidedRule() == Rule::Matching)
+	{
+		// generate Id
+		InfoRandomizer::Data data = InfoRandomizer::GetData();
+		int age = InfoRandomizer::GenerateRandomAge(data.personType);
+		sf::Sprite picture = IdPicturesDb::GetRandomPicture(data.gender);
+		id = Id(data.gender, age, data.personType, picture);
 
-	IdPicturesDb::LoadAssets();
-	IdPicturesDb::maleSprites[0].setPosition(250, 250);
-	IdPicturesDb::maleSprites[1].setPosition(350, 250);
-	IdPicturesDb::femaleSprites[2].setPosition(450, 250);
-
-
-	Id::LoadAssets();
-	Id id("Hooman", 24, "student", IdPicturesDb::maleSprites[2]);
-
-	Date date = DateManager::GenerateDate();
-
-	Ticket::LoadAssets();
-	Ticket ticket(date, Gender::Male, false, PersonType::Student);
+		// generate Ticket
+		Date date = DateManager::GenerateDateAfter(InfoRandomizer::GetCurrentDate());
+		ticket = Ticket(date, data.gender, false, data.personType);
+	}
 
 
 	while (window.isOpen())

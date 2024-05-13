@@ -36,5 +36,6 @@ public:
 	Ticket(Date expiration, Gender gender, bool isTorn, PersonType personType);
 	void Draw(sf::RenderWindow& window);
 	static void LoadAssets();
+	Ticket() = default;
 };
 

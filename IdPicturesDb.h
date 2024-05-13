@@ -22,6 +22,7 @@ private:
 
 public:
 	static void LoadAssets();
+	static sf::Sprite GetRandomPicture(Gender gender);
 
 private: static void LoadSpritesFromAddress(std::string address, sf::Texture textures[], sf::Sprite sprites[]);
 };

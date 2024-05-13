@@ -7,10 +7,13 @@ const std::string Id::backgroundTexturePath = "Assets/2D/IdCard.png";
 sf::Texture Id::backgroundTexture;
 sf::Sprite Id::backgroundSprite;
 
-Id::Id(const std::string title, int age, const std::string occupation, const sf::Sprite picture)
+Id::Id(Gender gender, int age, PersonType personType, const sf::Sprite picture)
 {
+	if (gender == Gender::Male)
+		this->title.setString("Mr. xxx");
+	else
+		this->title.setString("Ms. xxx");
 	Font::SetStyle(this->title);
-	this->title.setString(title);
 	this->title.setPosition(Positions::IdTitle[0], Positions::IdTitle[1]);
 
 	Font::SetStyle(this->age);
@@ -18,7 +21,20 @@ Id::Id(const std::string title, int age, const std::string occupation, const sf:
 	this->age.setPosition(Positions::IdAge[0], Positions::IdAge[1]);
 
 	Font::SetStyle(this->occupation);
-	this->occupation.setString(occupation);
+	switch (personType)
+	{
+	case PersonType::Normal:
+		this->occupation.setString("xxx Company");
+		break;
+	case PersonType::Student:
+		this->occupation.setString("university of xxx");
+		break;
+	case PersonType::Elder:
+		this->occupation.setString("retired");
+		break;
+	default:
+		break;
+	}
 	this->occupation.setPosition(Positions::IdOccupation[0], Positions::IdOccupation[1]);
 
 	this->picture = picture;

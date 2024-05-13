@@ -4,13 +4,13 @@
 class RuleDecider
 {
 private:
-	Rule decidedRule;
+	inline static Rule decidedRule;
 
 public:
-	Rule GetDecidedRule()
+	inline static Rule GetDecidedRule()
 	{
 		return decidedRule;
 	}
 
-	void DecideRule();
+	static void DecideRule();
 };

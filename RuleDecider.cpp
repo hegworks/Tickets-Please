@@ -1,5 +1,6 @@
 #include "GameplaySettings.h"
 #include "ProjectSettings.h"
+#include "Rng.h"
 #include "RuleDecider.h"
 #include <cstdlib>
 #include <iostream>
@@ -10,7 +11,8 @@ void RuleDecider::DecideRule()
 	int mismatchRand = rand() % 100;
 	if (ProjectSettings::CanLog)
 		std::cout << "mismatchRand: " << mismatchRand << std::endl;
-	bool isMismatch = mismatchRand > GameplaySettings::MismatchChance;
+	//bool isMismatch = mismatchRand > GameplaySettings::MismatchChance;
+	bool isMismatch = false;
 
 	if (!isMismatch)
 	{
@@ -18,9 +20,8 @@ void RuleDecider::DecideRule()
 	}
 	else
 	{
-		// why +1: because enum 0 is Matching and 1 until GameplaySettings::RuleEnumSize are Mismatch rules
-		// why -1: because we should not exceed the size of Rule Enum
-		decidedRule = static_cast<Rule>((rand() % (GameplaySettings::RuleEnumSize - 1)) + 1);
+		int randomRuleNumber = Rng::BetweenInclusive(1, GameplaySettings::RuleEnumSize - 1);
+		decidedRule = static_cast<Rule>(randomRuleNumber);
 	}
 	if (ProjectSettings::CanLog)
 		std::cout << "decidedRule: " << static_cast<int>(decidedRule) << std::endl;

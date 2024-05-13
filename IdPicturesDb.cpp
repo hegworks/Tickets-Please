@@ -1,5 +1,6 @@
 #include "Gender.h"
 #include "IdPicturesDb.h"
+#include "Rng.h"
 #include <filesystem>
 #include <iostream>
 
@@ -33,4 +34,17 @@ void IdPicturesDb::LoadSpritesFromAddress(std::string address, sf::Texture textu
 		sprites[i] = sprite;
 		i++;
 	};
+}
+
+sf::Sprite IdPicturesDb::GetRandomPicture(Gender gender)
+{
+	switch (gender)
+	{
+	case Gender::Male:
+		return maleSprites[Rng::BetweenInclusive(0, MalePicsCount - 1)];
+	case Gender::Female:
+		return femaleSprites[Rng::BetweenInclusive(0, FemalePicsCount - 1)];
+	default:
+		break;
+	}
 }
