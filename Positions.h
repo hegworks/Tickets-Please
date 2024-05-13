@@ -18,5 +18,17 @@ public:
 
 	inline static const int CollectMoney[2] = { 445,570 };
 	inline static const int CollectTicket[2] = { 673,570 };
+
+	inline static const int CollectBtnClickReports[8][2] =
+	{
+		{ 525,175 }, // Rule 0
+		{ 540,147 }, // Rule 1
+		{ 470,18  }, // Rule 2
+		{ 558,438 }, // Rule 3
+		{ 460,148 }, // Rule 4
+		{ 478,228 }, // Rule 5
+		{ 474,187 }, // Rule 6
+		{ 525,175 }, // Clicked Correctly
+	};
 };
 

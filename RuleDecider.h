@@ -5,6 +5,7 @@ class RuleDecider
 {
 private:
 	inline static Rule decidedRule;
+	inline static int decidedRuleIndex;
 
 public:
 	inline static Rule GetDecidedRule()

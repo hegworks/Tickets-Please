@@ -1,4 +1,5 @@
 #include "../ButtonsManager.h"
+#include "../CollectBtnClickReporter.h"
 #include "../DateManager.h"
 #include "../Font.h"
 #include "../Id.h"
@@ -23,6 +24,7 @@ int main()
 	Id::LoadAssets();
 	Ticket::LoadAssets();
 	ButtonsManager::LoadAssets();
+	CollectBtnClickReporter::LoadAssets();
 
 
 	InfoRandomizer::GenerateCurrentDate();
@@ -63,6 +65,7 @@ int main()
 	}
 	id = cards.id;
 	ticket = cards.ticket;
+	int zz = 0;
 
 	while (window.isOpen())
 	{
@@ -79,6 +82,7 @@ int main()
 					sf::Vector2i mousePos = sf::Vector2i(event.mouseButton.x, event.mouseButton.y);
 					if (ButtonsManager::HasClickedOnCollectMoney(mousePos))
 					{
+						zz++;
 						std::cout << "clicked on collect money\n";
 					}
 					else if (ButtonsManager::HasClickedOnCollectTicket(mousePos))
@@ -94,6 +98,8 @@ int main()
 		ticket.Draw(window);
 		DateManager::DrawCurrentDate(window);
 		ButtonsManager::Draw(window);
+		CollectBtnClickReporter::Draw(window, zz);
+
 		window.display();
 	}
 

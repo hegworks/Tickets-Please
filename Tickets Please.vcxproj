@@ -157,6 +157,7 @@
     <ClCompile Include="IdPicturesDb.cpp" />
     <ClCompile Include="InfoRandomizer.cpp" />
     <ClCompile Include="main\main.cpp" />
+    <ClCompile Include="CollectBtnClickReporter.cpp" />
     <ClCompile Include="RuleCardsMaker.cpp" />
     <ClCompile Include="RuleDecider.cpp" />
     <ClCompile Include="Ticket.cpp" />
@@ -172,6 +173,7 @@
     <ClInclude Include="IdPicturesDb.h" />
     <ClInclude Include="InfoRandomizer.h" />
     <ClInclude Include="Logger.h" />
+    <ClInclude Include="CollectBtnClickReporter.h" />
     <ClInclude Include="PersonType.h" />
     <ClInclude Include="Positions.h" />
     <ClInclude Include="Rng.h" />

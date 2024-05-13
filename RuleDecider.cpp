@@ -17,11 +17,13 @@ void RuleDecider::DecideRule()
 	if (!isMismatch)
 	{
 		decidedRule = Rule::Matching;
+		decidedRuleIndex = 0;
 	}
 	else
 	{
 		int randomRuleNumber = Rng::BetweenInclusive(1, GameplaySettings::RuleEnumSize - 1);
 		decidedRule = static_cast<Rule>(randomRuleNumber);
+		decidedRuleIndex = randomRuleNumber;
 	}
 	if (ProjectSettings::CanLog)
 		std::cout << "decidedRule: " << static_cast<int>(decidedRule) << std::endl;
