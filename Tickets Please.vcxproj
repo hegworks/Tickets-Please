@@ -157,6 +157,7 @@
     <ClCompile Include="InfoRandomizer.cpp" />
     <ClCompile Include="main\main.cpp" />
     <ClCompile Include="RuleDecider.cpp" />
+    <ClCompile Include="Ticket.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Date.h" />
@@ -175,6 +176,7 @@
     <ClInclude Include="ProjectSettings.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="RuleDecider.h" />
+    <ClInclude Include="Ticket.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Tickets Please.rc" />

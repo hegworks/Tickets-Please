@@ -1,3 +1,4 @@
+#include "../DateManager.h"
 #include "../Font.h"
 #include "../Id.h"
 #include "../IdPicturesDb.h"
@@ -6,6 +7,7 @@
 #include "../Rng.h"
 #include "../Rule.h"
 #include "../RuleDecider.h"
+#include "../Ticket.h"
 #include <iostream>
 #include <SFML/Graphics.hpp>
 
@@ -111,7 +113,12 @@ int main()
 
 
 	Id::LoadAssets();
-	Id id("Hesam", 24, "student", IdPicturesDb::maleSprites[2]);
+	Id id("Hooman", 24, "student", IdPicturesDb::maleSprites[2]);
+
+	Date date = DateManager::GenerateDate();
+
+	Ticket::LoadAssets();
+	Ticket ticket(date, Gender::Male, false, PersonType::Student);
 
 
 	while (window.isOpen())
@@ -130,6 +137,7 @@ int main()
 		window.draw(collectTicketSprite);
 		window.draw(collectMoneySprite);*/
 		id.Draw(window);
+		ticket.Draw(window);
 		/*window.draw(IdPicturesDb::maleSprites[0]);
 		window.draw(IdPicturesDb::maleSprites[1]);
 		window.draw(IdPicturesDb::femaleSprites[2]);*/
