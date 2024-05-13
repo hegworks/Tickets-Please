@@ -2,6 +2,7 @@
 #include "GameplaySettings.h"
 #include "InfoRandomizer.h"
 #include "Rng.h"
+#include <iostream>
 #include <stdlib.h>
 
 InfoRandomizer::Data InfoRandomizer::data;
@@ -10,17 +11,17 @@ Date InfoRandomizer::currentDate;
 void InfoRandomizer::GenerateData()
 {
 	// random gender
-	int	genderChance = rand() % 2;
+	int	genderChance = Rng::BetweenInclusive(0, 1);
 	if (genderChance == 0)
 		data.gender = Gender::Male;
 	else
 		data.gender = Gender::Female;
 
 	// random PersonType
-	int personTypeChance = rand() % 3;
-	if (genderChance == 0)
+	int personTypeChance = Rng::BetweenInclusive(0, 2);
+	if (personTypeChance == 0)
 		data.personType = PersonType::Normal;
-	else if (genderChance == 1)
+	else if (personTypeChance == 1)
 		data.personType = PersonType::Student;
 	else
 		data.personType = PersonType::Elder;
