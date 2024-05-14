@@ -135,3 +135,34 @@ void GameStateManager::OnGameEvent(GameEvent gameEvent)
 		break;
 	}
 }
+
+void GameStateManager::HandleLeftMouseClicks(sf::Vector2i mousePos)
+{
+	GameState oldGameState = GameStateManager::gameState;
+	GameStateManager::OnGameEvent(GameEvent::ClickedOnScreen);
+	GameState newGameState = GameStateManager::gameState;
+	if (oldGameState != newGameState)
+	{
+		// if clicking on screen changed the game state, then do nothing
+		// this is to prevent double game state changes when player
+		// clicks on a button when we are in WaitingForSkipCollectBtnReport
+		// state. as it first triggers ClickedOnScreen, then ClickedOn one
+		// one of the buttons
+	}
+	else if (ButtonsManager::HasClickedOnCollectMoney(mousePos))
+	{
+		GameStateManager::OnGameEvent(GameEvent::ClickedOnCollectMoneyBtn);
+	}
+	else if (ButtonsManager::HasClickedOnCollectTicket(mousePos))
+	{
+		GameStateManager::OnGameEvent(GameEvent::ClickedOnCollectTicketBtn);
+	}
+	else if (TimesUpMenu::HasClickedOnMainMenuBtn(mousePos))
+	{
+		GameStateManager::OnGameEvent(GameEvent::ClickedOnTimesUpMainMenuBtn);
+	}
+	else if (MainMenu::HasClickedOnNewGameBtn(mousePos))
+	{
+		GameStateManager::OnGameEvent(GameEvent::ClickedOnMainMenuNewGameBtn);
+	}
+}

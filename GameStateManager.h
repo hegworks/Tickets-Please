@@ -9,4 +9,5 @@ public:
 
 public:
 	void static OnGameEvent(GameEvent gameEvent);
+	void static HandleLeftMouseClicks(sf::Vector2i mousePos);
 };
