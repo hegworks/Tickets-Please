@@ -45,6 +45,7 @@ void GameStateManager::OnGameEvent(GameEvent gameEvent)
 			main::NewCards();
 			Timer::Start();
 			MainMenu::Hide();
+			AudioManager::PlayUiClick();
 
 			gameState = GameState::WaitingForCollectBtnClick;
 		}
@@ -59,12 +60,14 @@ void GameStateManager::OnGameEvent(GameEvent gameEvent)
 			{
 				// player clicked correctly
 				ScoreManager::IncreaseScore();
+				AudioManager::PlayCorrectAnswser();
 				CollectBtnClickReporter::Show(7);
 			}
 			else
 			{
 				// player clicked wrongly
 				ScoreManager::DecreaseScore();
+				AudioManager::PlayWrongAnswer();
 				CollectBtnClickReporter::Show(decidedRule);
 			}
 			gameState = GameState::WaitingForSkipCollectBtnReport;
@@ -76,12 +79,14 @@ void GameStateManager::OnGameEvent(GameEvent gameEvent)
 			{
 				// player clicked correctly
 				ScoreManager::IncreaseScore();
+				AudioManager::PlayCorrectAnswser();
 				CollectBtnClickReporter::Show(7);
 			}
 			else
 			{
 				// player clicked wrongly
 				ScoreManager::DecreaseScore();
+				AudioManager::PlayWrongAnswer();
 				CollectBtnClickReporter::Show(decidedRule);
 			}
 			gameState = GameState::WaitingForSkipCollectBtnReport;
@@ -96,6 +101,7 @@ void GameStateManager::OnGameEvent(GameEvent gameEvent)
 			// so we hide the report and generate a new set of cards
 			CollectBtnClickReporter::Hide();
 			main::NewCards();
+			AudioManager::PlayUiClick();
 			gameState = GameState::WaitingForCollectBtnClick;
 		}
 		break;
@@ -106,6 +112,7 @@ void GameStateManager::OnGameEvent(GameEvent gameEvent)
 		{
 			MainMenu::Show();
 			TimesUpMenu::Hide();
+			AudioManager::PlayUiClick();
 			gameState = GameState::InMainMenu;
 		}
 	}
