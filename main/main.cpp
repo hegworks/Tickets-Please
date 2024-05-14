@@ -1,3 +1,4 @@
+#include "../AudioManager.h"
 #include "../ButtonsManager.h"
 #include "../CollectBtnClickReporter.h"
 #include "../DateManager.h"
@@ -35,6 +36,7 @@ int main()
 	Timer::Initialize();
 	TimesUpMenu::LoadAssets();
 	MainMenu::LoadAssets();
+	AudioManager::LoadAssets();
 
 	GameStateManager::OnGameEvent(GameEvent::GameOpened);
 

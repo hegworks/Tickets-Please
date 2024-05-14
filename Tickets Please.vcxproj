@@ -151,6 +151,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AudioManager.cpp" />
     <ClCompile Include="ButtonsManager.cpp" />
     <ClCompile Include="DateManager.cpp" />
     <ClCompile Include="GameStateManager.cpp" />
@@ -168,6 +169,7 @@
     <ClCompile Include="TimesUpMenu.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AudioManager.h" />
     <ClInclude Include="ButtonsManager.h" />
     <ClInclude Include="Date.h" />
     <ClInclude Include="DateManager.h" />

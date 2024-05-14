@@ -1,3 +1,4 @@
+#include "AudioManager.h"
 #include "CollectBtnClickReporter.h"
 #include "DateManager.h"
 #include "GameStateManager.h"
@@ -18,6 +19,7 @@ void GameStateManager::OnGameEvent(GameEvent gameEvent)
 	if (gameEvent == GameEvent::GameOpened)
 	{
 		MainMenu::Show();
+		AudioManager::PlayBgm();
 
 		gameState = GameState::InMainMenu;
 		return;
