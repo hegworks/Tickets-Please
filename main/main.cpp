@@ -1,42 +1,20 @@
-#include "../AudioManager.h"
 #include "../ButtonsManager.h"
 #include "../CollectBtnClickReporter.h"
 #include "../DateManager.h"
-#include "../Font.h"
 #include "../GameStateManager.h"
-#include "../Id.h"
-#include "../IdPicturesDb.h"
 #include "../InfoRandomizer.h"
 #include "../main.h"
 #include "../MainMenu.h"
-#include "../ProjectSettings.h"
-#include "../Rng.h"
 #include "../Rule.h"
 #include "../RuleCardsMaker.h"
 #include "../RuleDecider.h"
 #include "../ScoreManager.h"
-#include "../Ticket.h"
 #include "../Timer.h"
 #include "../TimesUpMenu.h"
-#include <iostream>
-#include <SFML/Graphics.hpp>
 
 int main()
 {
 	sf::RenderWindow window(sf::VideoMode(1280, 720), "Tickets, Please", sf::Style::Close | sf::Style::Titlebar);
-
-
-	Font::LoadAssets();
-	IdPicturesDb::LoadAssets();
-	Id::LoadAssets();
-	Ticket::LoadAssets();
-	ButtonsManager::LoadAssets();
-	CollectBtnClickReporter::LoadAssets();
-	ScoreManager::Initialize();
-	Timer::Initialize();
-	TimesUpMenu::LoadAssets();
-	MainMenu::LoadAssets();
-	AudioManager::LoadAssets();
 
 	GameStateManager::OnGameEvent(GameEvent::GameOpened);
 

@@ -1,7 +1,10 @@
 #include "AudioManager.h"
+#include "ButtonsManager.h"
 #include "CollectBtnClickReporter.h"
 #include "DateManager.h"
+#include "Font.h"
 #include "GameStateManager.h"
+#include "IdPicturesDb.h"
 #include "InfoRandomizer.h"
 #include "main.h"
 #include "MainMenu.h"
@@ -18,6 +21,18 @@ void GameStateManager::OnGameEvent(GameEvent gameEvent)
 
 	if (gameEvent == GameEvent::GameOpened)
 	{
+		Font::LoadAssets();
+		IdPicturesDb::LoadAssets();
+		Id::LoadAssets();
+		Ticket::LoadAssets();
+		ButtonsManager::LoadAssets();
+		CollectBtnClickReporter::LoadAssets();
+		ScoreManager::Initialize();
+		Timer::Initialize();
+		TimesUpMenu::LoadAssets();
+		MainMenu::LoadAssets();
+		AudioManager::LoadAssets();
+
 		MainMenu::Show();
 		AudioManager::PlayBgm();
 
