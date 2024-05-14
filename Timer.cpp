@@ -6,7 +6,7 @@
 
 void Timer::Initialize()
 {
-	eachGameTime = sf::seconds(GameplaySettings::TimeOfEachGameSeconds);
+	eachGameTime = sf::seconds(GameplaySettings::TimeOfEachGameInSeconds);
 	Font::SetStyle_TopTexts(timeLeftText);
 	timeLeftText.setPosition(Positions::Time[0], Positions::Time[1]);
 }

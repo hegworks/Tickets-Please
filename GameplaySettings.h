@@ -20,5 +20,5 @@ public:
 	static const int ScoreIncreaseAmount = 100;
 	static const int ScoreDecreaseAmount = 50;
 
-	static const int TimeOfEachGameSeconds = 20;
+	static const int TimeOfEachGameInSeconds = 60;
 };
