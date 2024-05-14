@@ -28,7 +28,7 @@ void GameStateManager::OnGameEvent(GameEvent gameEvent)
 	if (gameEvent == GameEvent::TimesUp)
 	{
 		TimesUpMenu::Show(ScoreManager::GetScoreInt());
-		gameState = GameState::WaitingForTimesUpMenuBtnClick;
+		gameState = GameState::InTimesUpMenu;
 		return;
 	}
 
@@ -47,11 +47,11 @@ void GameStateManager::OnGameEvent(GameEvent gameEvent)
 			MainMenu::Hide();
 			AudioManager::PlayUiClick();
 
-			gameState = GameState::WaitingForCollectBtnClick;
+			gameState = GameState::InGameplay;
 		}
 		break;
 	}
-	case GameState::WaitingForCollectBtnClick:
+	case GameState::InGameplay:
 	{
 		if (gameEvent == GameEvent::ClickedOnCollectMoneyBtn)
 		{
@@ -70,7 +70,7 @@ void GameStateManager::OnGameEvent(GameEvent gameEvent)
 				AudioManager::PlayWrongAnswer();
 				CollectBtnClickReporter::Show(decidedRule);
 			}
-			gameState = GameState::WaitingForSkipCollectBtnReport;
+			gameState = GameState::InGamePlayReport;
 		}
 		else if (gameEvent == GameEvent::ClickedOnCollectTicketBtn)
 		{
@@ -89,11 +89,11 @@ void GameStateManager::OnGameEvent(GameEvent gameEvent)
 				AudioManager::PlayWrongAnswer();
 				CollectBtnClickReporter::Show(decidedRule);
 			}
-			gameState = GameState::WaitingForSkipCollectBtnReport;
+			gameState = GameState::InGamePlayReport;
 		}
 		break;
 	}
-	case GameState::WaitingForSkipCollectBtnReport:
+	case GameState::InGamePlayReport:
 	{
 		if (gameEvent == GameEvent::ClickedOnScreen)
 		{
@@ -102,11 +102,11 @@ void GameStateManager::OnGameEvent(GameEvent gameEvent)
 			CollectBtnClickReporter::Hide();
 			main::NewCards();
 			AudioManager::PlayUiClick();
-			gameState = GameState::WaitingForCollectBtnClick;
+			gameState = GameState::InGameplay;
 		}
 		break;
 	}
-	case GameState::WaitingForTimesUpMenuBtnClick:
+	case GameState::InTimesUpMenu:
 	{
 		if (gameEvent == GameEvent::ClickedOnTimesUpMainMenuBtn)
 		{

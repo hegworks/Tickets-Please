@@ -5,7 +5,7 @@
 class GameStateManager
 {
 public:
-	inline static GameState gameState = GameState::WaitingForCollectBtnClick;
+	inline static GameState gameState = GameState::InGameplay;
 
 public:
 	void static OnGameEvent(GameEvent gameEvent);

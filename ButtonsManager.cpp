@@ -26,14 +26,14 @@ void ButtonsManager::Draw(sf::RenderWindow& window)
 
 bool ButtonsManager::HasClickedOnCollectMoney(sf::Vector2i mousePos)
 {
-	if (GameStateManager::gameState != GameState::WaitingForCollectBtnClick) return false;
+	if (GameStateManager::gameState != GameState::InGameplay) return false;
 
 	return collectMoneySprite.getGlobalBounds().contains(mousePos.x, mousePos.y);
 }
 
 bool ButtonsManager::HasClickedOnCollectTicket(sf::Vector2i mousePos)
 {
-	if (GameStateManager::gameState != GameState::WaitingForCollectBtnClick) return false;
+	if (GameStateManager::gameState != GameState::InGameplay) return false;
 
 	return collectTicketSprite.getGlobalBounds().contains(mousePos.x, mousePos.y);
 }
