@@ -27,7 +27,7 @@ public:
 	inline static const int TimesUpScore[2] = { 640,395 };
 	inline static const int TimesUpMainMenuBtn[2] = { 560,496 };
 
-	inline static const int MainMenuBackground[2] = { 444,0 };
+	inline static const int MainMenuBackground[2] = { 0,0 };
 	inline static const int MainMenuNewGameBtn[2] = { 559,313 };
 
 	inline static const int CollectBtnClickReports[8][2] =

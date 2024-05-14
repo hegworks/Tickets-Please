@@ -3,7 +3,7 @@
 class MainMenu
 {
 private:
-	inline static const std::string backgroundTexturePath = "Assets/2D/MainMenuBackground.png";
+	inline static const std::string backgroundTexturePath = "Assets/2D/Background.png";
 	inline static sf::Texture backgroundTexture;
 	inline static sf::Sprite backgroundSprite;
 
@@ -18,6 +18,7 @@ public:
 	static void Show();
 	static void Hide();
 	static void Draw(sf::RenderWindow& window);
+	static void DrawBackground(sf::RenderWindow& window);
 	static bool HasClickedOnNewGameBtn(sf::Vector2i mousePos);
 };
 

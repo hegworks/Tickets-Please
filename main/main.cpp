@@ -37,8 +37,9 @@ int main()
 
 		Timer::Update();
 
-		window.clear(sf::Color(115, 115, 140));
+		window.clear();
 
+		MainMenu::DrawBackground(window);
 		RuleCardsMaker::cards.id.Draw(window);
 		RuleCardsMaker::cards.ticket.Draw(window);
 		DateManager::DrawCurrentDate(window);

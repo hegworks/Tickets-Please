@@ -35,6 +35,11 @@ void MainMenu::Draw(sf::RenderWindow& window)
 	window.draw(newGameBtnSprite);
 }
 
+void MainMenu::DrawBackground(sf::RenderWindow& window)
+{
+	window.draw(backgroundSprite);
+}
+
 bool MainMenu::HasClickedOnNewGameBtn(sf::Vector2i mousePos)
 {
 	if (!canShow) return false;

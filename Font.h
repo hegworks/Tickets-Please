@@ -19,7 +19,7 @@ public:
 		text.setFont(Font::font);
 		text.setStyle(sf::Text::Bold);
 		text.setCharacterSize(22);
-		text.setFillColor(sf::Color(146, 0, 0));
+		text.setFillColor(sf::Color(19, 15, 64));
 	}
 
 	inline static void SetStyle_TopTexts(sf::Text& text)
