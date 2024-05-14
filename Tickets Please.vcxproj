@@ -161,6 +161,7 @@
     <ClCompile Include="CollectBtnClickReporter.cpp" />
     <ClCompile Include="RuleCardsMaker.cpp" />
     <ClCompile Include="RuleDecider.cpp" />
+    <ClCompile Include="ScoreManager.cpp" />
     <ClCompile Include="Ticket.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -187,6 +188,7 @@
     <ClInclude Include="resource.h" />
     <ClInclude Include="RuleCardsMaker.h" />
     <ClInclude Include="RuleDecider.h" />
+    <ClInclude Include="ScoreManager.h" />
     <ClInclude Include="Ticket.h" />
   </ItemGroup>
   <ItemGroup>

@@ -16,4 +16,7 @@ public:
 
 	static const int NormalAgeRangeStart = 18;
 	static const int NormalAgeRangeEnd = 54;
+
+	static const int ScoreIncreaseAmount = 100;
+	static const int ScoreDecreaseAmount = 50;
 };

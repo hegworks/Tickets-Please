@@ -12,6 +12,7 @@
 #include "../Rule.h"
 #include "../RuleCardsMaker.h"
 #include "../RuleDecider.h"
+#include "../ScoreManager.h"
 #include "../Ticket.h"
 #include <iostream>
 #include <SFML/Graphics.hpp>
@@ -27,6 +28,7 @@ int main()
 	Ticket::LoadAssets();
 	ButtonsManager::LoadAssets();
 	CollectBtnClickReporter::LoadAssets();
+	ScoreManager::Initialize();
 
 	main::NewCards();
 
@@ -71,6 +73,7 @@ int main()
 		main::id.Draw(window);
 		main::ticket.Draw(window);
 		DateManager::DrawCurrentDate(window);
+		ScoreManager::Draw(window);
 		ButtonsManager::Draw(window);
 		CollectBtnClickReporter::Draw(window);
 		window.display();
