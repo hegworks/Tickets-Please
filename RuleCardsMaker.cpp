@@ -3,6 +3,7 @@
 #include "InfoRandomizer.h"
 #include "Rng.h"
 #include "RuleCardsMaker.h"
+#include "RuleDecider.h"
 
 /// <summary>
 /// every field matches
@@ -167,4 +168,39 @@ RuleCardsMaker::Cards RuleCardsMaker::GenerateCrossElderCards()
 	cards.ticket = Ticket(date, data.gender, false, PersonType::Elder);
 
 	return cards;
+}
+
+void RuleCardsMaker::NewCards()
+{
+	InfoRandomizer::GenerateData();
+	RuleDecider::DecideRule();
+
+	RuleCardsMaker::Cards cards;
+
+	switch (RuleDecider::GetDecidedRule())
+	{
+	case Rule::Matching:
+		cards = RuleCardsMaker::GenerateMatchingCards();
+		break;
+	case Rule::IdTitlePicture:
+		cards = RuleCardsMaker::GenerateIdTitlePictureCards();
+		break;
+	case Rule::TicketDate:
+		cards = RuleCardsMaker::GenerateTicketDateCards();
+		break;
+	case Rule::TicketTorn:
+		cards = RuleCardsMaker::GenerateTicketTornCards();
+		break;
+	case Rule::TicketGender:
+		cards = RuleCardsMaker::GenerateTicketGenderCards();
+		break;
+	case Rule::CrossStudent:
+		cards = RuleCardsMaker::GenerateCrossStudentCards();
+		break;
+	case Rule::CrossElder:
+		cards = RuleCardsMaker::GenerateCrossElderCards();
+		break;
+	default:
+		break;
+	}
 }

@@ -2,12 +2,8 @@
 #include "../CollectBtnClickReporter.h"
 #include "../DateManager.h"
 #include "../GameStateManager.h"
-#include "../InfoRandomizer.h"
-#include "../main.h"
 #include "../MainMenu.h"
-#include "../Rule.h"
 #include "../RuleCardsMaker.h"
-#include "../RuleDecider.h"
 #include "../ScoreManager.h"
 #include "../Timer.h"
 #include "../TimesUpMenu.h"
@@ -67,8 +63,8 @@ int main()
 
 		window.clear(sf::Color(115, 115, 140));
 
-		main::id.Draw(window);
-		main::ticket.Draw(window);
+		RuleCardsMaker::cards.id.Draw(window);
+		RuleCardsMaker::cards.ticket.Draw(window);
 		DateManager::DrawCurrentDate(window);
 		ScoreManager::Draw(window);
 		Timer::Draw(window);
@@ -81,43 +77,4 @@ int main()
 	}
 
 	return 0;
-}
-
-
-
-void main::NewCards()
-{
-	InfoRandomizer::GenerateData();
-	RuleDecider::DecideRule();
-
-	RuleCardsMaker::Cards cards;
-
-	switch (RuleDecider::GetDecidedRule())
-	{
-	case Rule::Matching:
-		cards = RuleCardsMaker::GenerateMatchingCards();
-		break;
-	case Rule::IdTitlePicture:
-		cards = RuleCardsMaker::GenerateIdTitlePictureCards();
-		break;
-	case Rule::TicketDate:
-		cards = RuleCardsMaker::GenerateTicketDateCards();
-		break;
-	case Rule::TicketTorn:
-		cards = RuleCardsMaker::GenerateTicketTornCards();
-		break;
-	case Rule::TicketGender:
-		cards = RuleCardsMaker::GenerateTicketGenderCards();
-		break;
-	case Rule::CrossStudent:
-		cards = RuleCardsMaker::GenerateCrossStudentCards();
-		break;
-	case Rule::CrossElder:
-		cards = RuleCardsMaker::GenerateCrossElderCards();
-		break;
-	default:
-		break;
-	}
-	id = cards.id;
-	ticket = cards.ticket;
 }

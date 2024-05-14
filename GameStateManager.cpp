@@ -6,8 +6,8 @@
 #include "GameStateManager.h"
 #include "IdPicturesDb.h"
 #include "InfoRandomizer.h"
-#include "main.h"
 #include "MainMenu.h"
+#include "RuleCardsMaker.h"
 #include "RuleDecider.h"
 #include "ScoreManager.h"
 #include "Timer.h"
@@ -57,7 +57,7 @@ void GameStateManager::OnGameEvent(GameEvent gameEvent)
 			DateManager::CreateCurrentDateText(InfoRandomizer::GetCurrentDate());
 			ScoreManager::ResetScore();
 			CollectBtnClickReporter::Hide();
-			main::NewCards();
+			RuleCardsMaker::NewCards();
 			Timer::Start();
 			MainMenu::Hide();
 			AudioManager::PlayUiClick();
@@ -115,7 +115,7 @@ void GameStateManager::OnGameEvent(GameEvent gameEvent)
 			// CollectBtnReport was shown and user has clicked on the screen
 			// so we hide the report and generate a new set of cards
 			CollectBtnClickReporter::Hide();
-			main::NewCards();
+			RuleCardsMaker::NewCards();
 			AudioManager::PlayUiClick();
 			gameState = GameState::InGameplay;
 		}

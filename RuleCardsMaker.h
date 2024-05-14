@@ -18,6 +18,7 @@ public:
 	inline static Cards cards;
 
 public:
+	static void NewCards();
 	static Cards GenerateMatchingCards();
 	static Cards GenerateIdTitlePictureCards();
 	static Cards GenerateTicketDateCards();
