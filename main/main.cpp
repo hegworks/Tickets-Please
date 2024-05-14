@@ -30,6 +30,8 @@ int main()
 	CollectBtnClickReporter::LoadAssets();
 	ScoreManager::Initialize();
 
+	InfoRandomizer::GenerateCurrentDate();
+	DateManager::CreateCurrentDateText(InfoRandomizer::GetCurrentDate());
 	main::NewCards();
 
 	while (window.isOpen())
@@ -86,9 +88,6 @@ int main()
 
 void main::NewCards()
 {
-	InfoRandomizer::GenerateCurrentDate();
-	DateManager::CreateCurrentDateText(InfoRandomizer::GetCurrentDate());
-
 	InfoRandomizer::GenerateData();
 	RuleDecider::DecideRule();
 
