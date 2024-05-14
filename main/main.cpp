@@ -14,6 +14,7 @@
 #include "../RuleDecider.h"
 #include "../ScoreManager.h"
 #include "../Ticket.h"
+#include "../Timer.h"
 #include <iostream>
 #include <SFML/Graphics.hpp>
 
@@ -29,10 +30,12 @@ int main()
 	ButtonsManager::LoadAssets();
 	CollectBtnClickReporter::LoadAssets();
 	ScoreManager::Initialize();
+	Timer::Initialize();
 
 	InfoRandomizer::GenerateCurrentDate();
 	DateManager::CreateCurrentDateText(InfoRandomizer::GetCurrentDate());
 	main::NewCards();
+	Timer::Start();
 
 	while (window.isOpen())
 	{
@@ -71,13 +74,18 @@ int main()
 			}
 		}
 
+		Timer::Update();
+
 		window.clear(sf::Color(115, 115, 140));
+
 		main::id.Draw(window);
 		main::ticket.Draw(window);
 		DateManager::DrawCurrentDate(window);
 		ScoreManager::Draw(window);
+		Timer::Draw(window);
 		ButtonsManager::Draw(window);
 		CollectBtnClickReporter::Draw(window);
+
 		window.display();
 	}
 

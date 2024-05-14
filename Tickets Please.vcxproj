@@ -163,6 +163,7 @@
     <ClCompile Include="RuleDecider.cpp" />
     <ClCompile Include="ScoreManager.cpp" />
     <ClCompile Include="Ticket.cpp" />
+    <ClCompile Include="Timer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ButtonsManager.h" />
@@ -190,6 +191,7 @@
     <ClInclude Include="RuleDecider.h" />
     <ClInclude Include="ScoreManager.h" />
     <ClInclude Include="Ticket.h" />
+    <ClInclude Include="Timer.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Tickets Please.rc" />
