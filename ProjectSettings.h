@@ -7,6 +7,6 @@ public:
 		static const int X = 1280;
 		static const int Y = 720;
 	};
-	static const bool CanLog = true;
+	static const bool CanLog = false;
 };
 

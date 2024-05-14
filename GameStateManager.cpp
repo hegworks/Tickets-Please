@@ -7,6 +7,7 @@
 #include "IdPicturesDb.h"
 #include "InfoRandomizer.h"
 #include "MainMenu.h"
+#include "ProjectSettings.h"
 #include "RuleCardsMaker.h"
 #include "RuleDecider.h"
 #include "ScoreManager.h"
@@ -16,8 +17,11 @@
 
 void GameStateManager::OnGameEvent(GameEvent gameEvent)
 {
-	std::cout << "gameEvent:" << static_cast<int>(gameEvent) << "\n";
-	std::cout << "gameState:" << static_cast<int>(gameState) << "-------\n";
+	if (ProjectSettings::CanLog)
+	{
+		std::cout << "gameEvent:" << static_cast<int>(gameEvent) << "\n";
+		std::cout << "gameState:" << static_cast<int>(gameState) << "-------\n";
+	}
 
 	if (gameEvent == GameEvent::GameOpened)
 	{
