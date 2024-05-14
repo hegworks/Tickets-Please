@@ -157,6 +157,7 @@
     <ClCompile Include="Id.cpp" />
     <ClCompile Include="IdPicturesDb.cpp" />
     <ClCompile Include="InfoRandomizer.cpp" />
+    <ClCompile Include="MainMenu.cpp" />
     <ClCompile Include="main\main.cpp" />
     <ClCompile Include="CollectBtnClickReporter.cpp" />
     <ClCompile Include="RuleCardsMaker.cpp" />
@@ -164,6 +165,7 @@
     <ClCompile Include="ScoreManager.cpp" />
     <ClCompile Include="Ticket.cpp" />
     <ClCompile Include="Timer.cpp" />
+    <ClCompile Include="TimesUpMenu.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ButtonsManager.h" />
@@ -181,6 +183,7 @@
     <ClInclude Include="Logger.h" />
     <ClInclude Include="CollectBtnClickReporter.h" />
     <ClInclude Include="main.h" />
+    <ClInclude Include="MainMenu.h" />
     <ClInclude Include="PersonType.h" />
     <ClInclude Include="Positions.h" />
     <ClInclude Include="Rng.h" />
@@ -192,6 +195,7 @@
     <ClInclude Include="ScoreManager.h" />
     <ClInclude Include="Ticket.h" />
     <ClInclude Include="Timer.h" />
+    <ClInclude Include="TimesUpMenu.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Tickets Please.rc" />

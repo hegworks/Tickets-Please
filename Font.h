@@ -29,4 +29,12 @@ public:
 		text.setCharacterSize(24);
 		text.setFillColor(sf::Color::White);
 	}
+
+	inline static void SetStyle_TimesUpScore(sf::Text& text)
+	{
+		text.setFont(Font::font);
+		text.setStyle(sf::Text::Bold);
+		text.setCharacterSize(32);
+		text.setFillColor(sf::Color::White);
+	}
 };

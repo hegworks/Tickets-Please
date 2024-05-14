@@ -1,16 +1,53 @@
 #include "CollectBtnClickReporter.h"
+#include "DateManager.h"
 #include "GameStateManager.h"
+#include "InfoRandomizer.h"
 #include "main.h"
+#include "MainMenu.h"
 #include "RuleDecider.h"
 #include "ScoreManager.h"
+#include "Timer.h"
+#include "TimesUpMenu.h"
 #include <iostream>
 
 void GameStateManager::OnGameEvent(GameEvent gameEvent)
 {
 	std::cout << "gameEvent:" << static_cast<int>(gameEvent) << "\n";
 	std::cout << "gameState:" << static_cast<int>(gameState) << "-------\n";
+
+	if (gameEvent == GameEvent::GameOpened)
+	{
+		MainMenu::Show();
+
+		gameState = GameState::InMainMenu;
+		return;
+	}
+
+	if (gameEvent == GameEvent::TimesUp)
+	{
+		TimesUpMenu::Show(ScoreManager::GetScoreInt());
+		gameState = GameState::WaitingForTimesUpMenuBtnClick;
+		return;
+	}
+
 	switch (gameState)
 	{
+	case GameState::InMainMenu:
+	{
+		if (gameEvent == GameEvent::ClickedOnMainMenuNewGameBtn)
+		{
+			InfoRandomizer::GenerateCurrentDate();
+			DateManager::CreateCurrentDateText(InfoRandomizer::GetCurrentDate());
+			ScoreManager::ResetScore();
+			CollectBtnClickReporter::Hide();
+			main::NewCards();
+			Timer::Start();
+			MainMenu::Hide();
+
+			gameState = GameState::WaitingForCollectBtnClick;
+		}
+		break;
+	}
 	case GameState::WaitingForCollectBtnClick:
 	{
 		if (gameEvent == GameEvent::ClickedOnCollectMoneyBtn)
@@ -60,6 +97,15 @@ void GameStateManager::OnGameEvent(GameEvent gameEvent)
 			gameState = GameState::WaitingForCollectBtnClick;
 		}
 		break;
+	}
+	case GameState::WaitingForTimesUpMenuBtnClick:
+	{
+		if (gameEvent == GameEvent::ClickedOnTimesUpMainMenuBtn)
+		{
+			MainMenu::Show();
+			TimesUpMenu::Hide();
+			gameState = GameState::InMainMenu;
+		}
 	}
 	default:
 		break;

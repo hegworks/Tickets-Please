@@ -23,6 +23,13 @@ public:
 	inline static const int CollectMoney[2] = { 445,570 };
 	inline static const int CollectTicket[2] = { 673,570 };
 
+	inline static const int TimesUpBackground[2] = { 444,78 };
+	inline static const int TimesUpScore[2] = { 640,395 };
+	inline static const int TimesUpMainMenuBtn[2] = { 560,496 };
+
+	inline static const int MainMenuBackground[2] = { 444,0 };
+	inline static const int MainMenuNewGameBtn[2] = { 559,313 };
+
 	inline static const int CollectBtnClickReports[8][2] =
 	{
 		{ 525,175 }, // Rule 0

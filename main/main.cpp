@@ -7,6 +7,7 @@
 #include "../IdPicturesDb.h"
 #include "../InfoRandomizer.h"
 #include "../main.h"
+#include "../MainMenu.h"
 #include "../ProjectSettings.h"
 #include "../Rng.h"
 #include "../Rule.h"
@@ -15,6 +16,7 @@
 #include "../ScoreManager.h"
 #include "../Ticket.h"
 #include "../Timer.h"
+#include "../TimesUpMenu.h"
 #include <iostream>
 #include <SFML/Graphics.hpp>
 
@@ -31,11 +33,10 @@ int main()
 	CollectBtnClickReporter::LoadAssets();
 	ScoreManager::Initialize();
 	Timer::Initialize();
+	TimesUpMenu::LoadAssets();
+	MainMenu::LoadAssets();
 
-	InfoRandomizer::GenerateCurrentDate();
-	DateManager::CreateCurrentDateText(InfoRandomizer::GetCurrentDate());
-	main::NewCards();
-	Timer::Start();
+	GameStateManager::OnGameEvent(GameEvent::GameOpened);
 
 	while (window.isOpen())
 	{
@@ -70,6 +71,14 @@ int main()
 					{
 						GameStateManager::OnGameEvent(GameEvent::ClickedOnCollectTicketBtn);
 					}
+					else if (TimesUpMenu::HasClickedOnMainMenuBtn(mousePos))
+					{
+						GameStateManager::OnGameEvent(GameEvent::ClickedOnTimesUpMainMenuBtn);
+					}
+					else if (MainMenu::HasClickedOnNewGameBtn(mousePos))
+					{
+						GameStateManager::OnGameEvent(GameEvent::ClickedOnMainMenuNewGameBtn);
+					}
 				}
 			}
 		}
@@ -85,6 +94,8 @@ int main()
 		Timer::Draw(window);
 		ButtonsManager::Draw(window);
 		CollectBtnClickReporter::Draw(window);
+		TimesUpMenu::Draw(window);
+		MainMenu::Draw(window);
 
 		window.display();
 	}

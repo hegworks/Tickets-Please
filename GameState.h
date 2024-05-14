@@ -1,6 +1,8 @@
 #pragma once
 enum class GameState
 {
-	WaitingForCollectBtnClick,
-	WaitingForSkipCollectBtnReport,
+	WaitingForCollectBtnClick, // InGameplay
+	WaitingForSkipCollectBtnReport, // InGamePlayReport
+	WaitingForTimesUpMenuBtnClick, //InTimesUpMenu
+	InMainMenu,
 };

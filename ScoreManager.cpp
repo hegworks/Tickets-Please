@@ -3,6 +3,11 @@
 #include "Positions.h"
 #include "ScoreManager.h"
 
+int ScoreManager::GetScoreInt()
+{
+	return scoreInt;
+}
+
 void ScoreManager::Initialize()
 {
 	scoreInt = 0;

@@ -8,6 +8,7 @@ private:
 	inline static sf::Time timeLeft;
 	inline static sf::Text timeLeftText;
 	inline static sf::Clock clock;
+	inline static bool sentTimesUpEvent = false;
 
 public:
 	static void Initialize();

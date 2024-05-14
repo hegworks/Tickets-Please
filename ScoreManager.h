@@ -8,6 +8,7 @@ private:
 	inline static sf::Text scoreText;
 
 public:
+	static int GetScoreInt();
 	static void Initialize();
 	static void IncreaseScore();
 	static void DecreaseScore();
